@@ -1,0 +1,131 @@
+﻿@model SiteMentoria.Models.Atividade
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<h1 class="display-uni">Detalhes</h1>
+
+<div>
+    <h4 class="display-uni">Atividade</h4>
+    <hr />
+    <table class="table table-striped">
+        <tr>
+            <td class="col-sm-2 display-uni font-weight-bold">
+                @Html.DisplayNameFor(model => model.Data)
+            </td>
+            <td class="col-sm-10">
+                @Html.DisplayFor(model => model.Data)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-sm-2 display-uni font-weight-bold">
+                @Html.DisplayNameFor(model => model.Professor)
+            </td>
+            <td class="col-sm-10">
+                @Html.DisplayFor(model => model.Professor.Nome)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-sm-2 display-uni font-weight-bold">
+                @Html.DisplayNameFor(model => model.Aluno)
+            </td>
+            <td class="col-sm-10">
+                @Html.DisplayFor(model => model.Aluno.Nome)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-sm-2 display-uni font-weight-bold">
+                @Html.DisplayNameFor(model => model.Tema)
+            </td>
+            <td class="col-sm-10">
+                @Html.DisplayFor(model => model.Tema)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-sm-2 display-uni font-weight-bold">
+                @Html.DisplayNameFor(model => model.AtividadeCodigo)
+            </td>
+            <td class="col-sm-10">
+                @Html.DisplayFor(model => model.AtividadeCodigo)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-sm-2 display-uni font-weight-bold">
+                @Html.DisplayNameFor(model => model.OpAprendizado)
+            </td>
+            <td class="col-sm-10">
+                @Html.DisplayFor(model => model.OpAprendizado)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-sm-2 display-uni font-weight-bold">
+                @Html.DisplayNameFor(model => model.AcAprendizado)
+            </td>
+            <td class="col-sm-10">
+                @Html.DisplayFor(model => model.AcAprendizado)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-sm-2 display-uni font-weight-bold">
+                @Html.DisplayNameFor(model => model.DataMensuracao)
+            </td>
+            <td class="col-sm-10">
+                @Html.DisplayFor(model => model.DataMensuracao)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-sm-2 display-uni font-weight-bold">
+                @Html.DisplayNameFor(model => model.FormMensuracao)
+            </td>
+            <td class="col-sm-10">
+                @Html.DisplayFor(model => model.FormMensuracao)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-sm-2 display-uni font-weight-bold">
+                @Html.DisplayNameFor(model => model.Resultado)
+            </td>
+            <td class="col-sm-10">
+                @Html.DisplayFor(model => model.Resultado)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-sm-2 display-uni font-weight-bold">
+                @Html.DisplayNameFor(model => model.Comentario)
+            </td>
+            <td class="col-sm-10">
+                @Html.DisplayFor(model => model.Comentario)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-sm-2 display-uni font-weight-bold">
+                @Html.DisplayNameFor(model => model.Status)
+            </td>
+            <td class="col-sm-10">
+                @switch (Model.Status)
+                {
+                    case 1:
+                        <p>Pronto para desenvolvimento</p>
+                        break;
+                    case 2:
+                        <p>Em desenvolvimento</p>
+                        break;
+                    case 3:
+                        <p>Concluído</p>
+                        break;
+                    case 4:
+                        <p>Cancelado</p>
+                        break;
+                    default:
+                        <p>Erro, status inválido</p>
+                        break;
+                }
+            </td>
+        </tr>
+    </table>
+</div>
+<div>
+    <a class="display-uni" asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
+    <a class="display-uni" href="javascript:void(0);" onclick="history.go(-1);">Voltar</a>
+</div>

@@ -1,0 +1,95 @@
+﻿@model IEnumerable<SiteMentoria.Models.Atividade>
+
+@{
+    ViewData["Title"] = "Lista de atividades";
+}
+
+<h1 class="tituloPags">Lista de atividades</h1>
+
+<p>
+    <button type="button" class="btn btn-primary bg-dark-uni">
+        <i class="bi bi-search"></i>
+        <a asp-action="Pesquisar" style="color: white; text-decoration: none">Nova pesquisa</a>
+    </button>
+</p>
+<table class="table table-light table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Professor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aluno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tema)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Professor.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aluno.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tema)
+                </td>
+                <td>
+                    @switch (item.Status)
+                    {
+                        case 1:
+                            <p>Pronto para desenvolvimento</p>
+                            break;
+                        case 2:
+                            <p>Em desenvolvimento</p>
+                            break;
+                        case 3:
+                            <p>Concluído</p>
+                            break;
+                        case 4:
+                            <p>Cancelado</p>
+                            break;
+                        default:
+                            <p>Erro, status inválido</p>
+                            break;
+                    }
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary bg-dark-uni">
+                        <i class="bi bi-pencil-square"></i>
+                        <a asp-action="Edit" asp-route-id="@item.Id" style="color: white; text-decoration: none">
+                            Editar
+                        </a>
+                    </button>
+                    <button type="button" class="btn btn-primary bg-dark-uni">
+                        <i class="bi bi-eye"></i>
+                        <a asp-action="Details" asp-route-id="@item.Id" style="color: white; text-decoration: none">
+                            Detalhes
+                        </a>
+                    </button>
+                    <button type="button" class="btn btn-primary bg-dark-uni">
+                        <i class="bi bi-trash3"></i>
+                        <a asp-action="Delete" asp-route-id="@item.Id" style="color: white; text-decoration: none">
+                            Deletar
+                        </a>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

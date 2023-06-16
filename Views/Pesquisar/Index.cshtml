@@ -1,0 +1,40 @@
+﻿@model SiteMentoria.Models.Pesquisa
+
+@{
+    ViewData["Title"] = "Pesquisar";
+}
+
+<h1 class="tituloPags">Pesquisar</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Pesquisar">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Data" class="control-label"></label>
+                <input asp-for="Data" class="form-control" />
+                <span asp-validation-for="Data" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Professor)
+                @Html.DropDownListFor(model => model.Professor.Id, new SelectList(ViewBag.Professores, "Id", "Nome"), "Selecione um professor", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Professor)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Aluno)
+                @Html.DropDownListFor(model => model.Aluno.Id, new SelectList(ViewBag.Alunos, "Id", "Nome"), "Selecione um aluno", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Aluno)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Status)
+                @Html.DropDownListFor(model => model.Status, new SelectList(ViewBag.Status, "Id", "Nome"), "Selecione um status", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Pesquisar" class="btn btn-primary bg-dark-uni" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />

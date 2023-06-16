@@ -1,0 +1,73 @@
+﻿@model IEnumerable<SiteMentoria.Models.Pessoa>
+
+@{
+    ViewData["Title"] = "Pessoas";
+}
+
+<h1 class="tituloPags">Pessoas</h1>
+
+<p>
+    <button type="button" class="btn btn-primary bg-dark-uni">
+        <i class="bi bi-person-plus"></i>
+        <a asp-action="Create" style="color: white; text-decoration: none">Adicionar</a>
+    </button>
+</p>
+<table class="table table-light table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsProfessor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @if (item.IsProfessor)
+                    {
+                        <span>Sim</span>
+                    }
+                    else
+                    {
+                        <span>Não</span>
+                    }
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary bg-dark-uni">
+                        <i class="bi bi-pencil-square"></i>
+                        <a asp-action="Edit" asp-route-id="@item.Id" style="color: white; text-decoration: none">
+                            Editar
+                        </a>
+                    </button>
+                    <button type="button" class="btn btn-primary bg-dark-uni">
+                        <i class="bi bi-eye"></i>
+                        <a asp-action="Details" asp-route-id="@item.Id" style="color: white; text-decoration: none">
+                            Detalhes
+                        </a>
+                    </button>
+                    <button type="button" class="btn btn-primary bg-dark-uni">
+                        <i class="bi bi-trash3"></i>
+                        <a asp-action="Delete" asp-route-id="@item.Id" style="color: white; text-decoration: none">
+                            Deletar
+                        </a>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

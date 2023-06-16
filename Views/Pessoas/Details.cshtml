@@ -1,0 +1,42 @@
+﻿@model SiteMentoria.Models.Pessoa
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<h1 class="display-uni">Detalhes</h1>
+
+<div>
+    <h4 class="display-uni">Pessoa</h4>
+    <hr />
+    <table class="table table-striped">
+        <tr>
+            <td class="col-sm-2 display-uni font-weight-bold">
+                @Html.DisplayNameFor(model => model.Nome)
+            </td>
+            <td class="col-sm-10">
+                @Html.DisplayFor(model => model.Nome)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-sm-2 display-uni font-weight-bold">
+                @Html.DisplayNameFor(model => model.Email)
+            </td>
+            <td class="col-sm-10">
+                @Html.DisplayFor(model => model.Email)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-sm-2 display-uni font-weight-bold">
+                @Html.DisplayNameFor(model => model.IsProfessor)
+            </td>
+            <td class="col-sm-10">
+                @Html.DisplayFor(model => model.IsProfessor)
+            </td>
+        </tr>
+    </table>
+</div>
+<div>
+    <a class="display-uni" asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
+    <a class="display-uni" asp-action="Index">Voltar</a>
+</div>
